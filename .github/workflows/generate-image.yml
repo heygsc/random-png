@@ -27,7 +27,9 @@ jobs:
         run: yarn generate
 
       - name: Commit generated image
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: generate random image"
-          file_pattern: random.png
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions@github.com"
+          git add random.png
+          git diff --cached --quiet || git commit -m "chore: generate random image"
+          git push
