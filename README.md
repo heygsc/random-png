@@ -1,11 +1,12 @@
 # hipng
 
-用 Node.js 随机生成一张 PNG 图片。
+用 Node.js 随机生成 PNG 图片和像素头像。
 
 输出文件固定为：
 
 ```text
 random.png
+avatar.png
 ```
 
 每次生成都会覆盖旧图片。
@@ -15,9 +16,10 @@ random.png
 ```bash
 yarn install
 yarn generate
+yarn avatar
 ```
 
-图片尺寸在 `generate-random-image.js` 顶部修改：
+图片尺寸在脚本顶部修改：
 
 ```js
 const WIDTH = 200;
@@ -26,4 +28,11 @@ const HEIGHT = 200;
 
 ## GitHub Actions
 
-`Actions` 页面里手动运行 `Generate Random Image`，会重新生成 `random.png` 并自动提交。
+`Actions` 页面里可以手动运行：
+
+```text
+Generate Random Image
+Generate Pixel Avatar
+```
+
+生成结果会自动提交。

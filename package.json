@@ -4,7 +4,8 @@
   "type": "module",
   "main": "generate-random-image.js",
   "scripts": {
-    "generate": "node generate-random-image.js"
+    "generate": "node generate-random-image.js",
+    "avatar": "node generate-avatar.js"
   },
   "license": "MIT",
   "dependencies": {
