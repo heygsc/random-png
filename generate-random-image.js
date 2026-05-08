@@ -2,8 +2,8 @@ import { createWriteStream } from 'node:fs';
 import { PNG } from 'pngjs';
 
 // Grid size and rendered cell size. Change these values if needed.
-const GRID_COLUMNS = 3;
-const GRID_ROWS = 3;
+const GRID_COLUMNS = 10;
+const GRID_ROWS = 10;
 const CELL_SIZE = 80;
 const WIDTH = GRID_COLUMNS * CELL_SIZE;
 const HEIGHT = GRID_ROWS * CELL_SIZE;
