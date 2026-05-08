@@ -2,8 +2,8 @@ import { createWriteStream } from 'node:fs';
 import { PNG } from 'pngjs';
 
 // Image size. Change these values if needed.
-const WIDTH = 200;
-const HEIGHT = 200;
+const WIDTH = 3;
+const HEIGHT = 3;
 const OUTPUT_FILE = 'random.png';
 
 function randomRGB() {
