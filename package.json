@@ -5,6 +5,7 @@
   "main": "generate-random-image.js",
   "scripts": {
     "generate": "node generate-random-image.js",
+    "generate:large": "node generate-random-image.js --large",
     "avatar": "node generate-avatar.js"
   },
   "license": "MIT",

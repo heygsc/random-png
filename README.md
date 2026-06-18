@@ -6,6 +6,7 @@
 
 ```text
 random.png
+random-large.png
 avatar.png
 ```
 
@@ -16,14 +17,19 @@ avatar.png
 ```bash
 yarn install
 yarn generate
+yarn generate:large
 yarn avatar
 ```
 
-图片尺寸在脚本顶部修改：
+默认随机图为 800x800，大尺寸随机图为 2000x2000。图片尺寸在脚本顶部修改：
 
 ```js
-const WIDTH = 200;
-const HEIGHT = 200;
+const DEFAULT_OPTIONS = {
+  gridColumns: 10,
+  gridRows: 10,
+  cellSize: 80,
+  outputFile: 'random.png',
+};
 ```
 
 ## GitHub Actions
@@ -32,6 +38,7 @@ const HEIGHT = 200;
 
 ```text
 Generate Random Image
+Generate Large Random Image
 Generate Pixel Avatar
 ```
 

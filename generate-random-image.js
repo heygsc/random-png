@@ -1,13 +1,27 @@
 import { createWriteStream } from 'node:fs';
 import { PNG } from 'pngjs';
 
-// Grid size and rendered cell size. Change these values if needed.
-const GRID_COLUMNS = 10;
-const GRID_ROWS = 10;
-const CELL_SIZE = 80;
-const WIDTH = GRID_COLUMNS * CELL_SIZE;
-const HEIGHT = GRID_ROWS * CELL_SIZE;
-const OUTPUT_FILE = 'random.png';
+const DEFAULT_OPTIONS = {
+  gridColumns: 10,
+  gridRows: 10,
+  cellSize: 80,
+  outputFile: 'random.png',
+};
+
+const LARGE_OPTIONS = {
+  gridColumns: 20,
+  gridRows: 20,
+  cellSize: 100,
+  outputFile: 'random-large.png',
+};
+
+function getOptions() {
+  if (process.argv.includes('--large')) {
+    return LARGE_OPTIONS;
+  }
+
+  return DEFAULT_OPTIONS;
+}
 
 function randomRGB() {
   return {
@@ -18,17 +32,20 @@ function randomRGB() {
 }
 
 async function generateRandomImage() {
-  const image = new PNG({ width: WIDTH, height: HEIGHT });
+  const { gridColumns, gridRows, cellSize, outputFile } = getOptions();
+  const width = gridColumns * cellSize;
+  const height = gridRows * cellSize;
+  const image = new PNG({ width, height });
 
-  for (let gridX = 0; gridX < GRID_COLUMNS; gridX += 1) {
-    for (let gridY = 0; gridY < GRID_ROWS; gridY += 1) {
+  for (let gridX = 0; gridX < gridColumns; gridX += 1) {
+    for (let gridY = 0; gridY < gridRows; gridY += 1) {
       const { r, g, b } = randomRGB();
 
-      for (let cellX = 0; cellX < CELL_SIZE; cellX += 1) {
-        for (let cellY = 0; cellY < CELL_SIZE; cellY += 1) {
-          const x = gridX * CELL_SIZE + cellX;
-          const y = gridY * CELL_SIZE + cellY;
-          const index = (WIDTH * y + x) << 2;
+      for (let cellX = 0; cellX < cellSize; cellX += 1) {
+        for (let cellY = 0; cellY < cellSize; cellY += 1) {
+          const x = gridX * cellSize + cellX;
+          const y = gridY * cellSize + cellY;
+          const index = (width * y + x) << 2;
           image.data[index] = r;
           image.data[index + 1] = g;
           image.data[index + 2] = b;
@@ -41,12 +58,12 @@ async function generateRandomImage() {
   await new Promise((resolve, reject) => {
     image
       .pack()
-      .pipe(createWriteStream(OUTPUT_FILE))
+      .pipe(createWriteStream(outputFile))
       .on('finish', resolve)
       .on('error', reject);
   });
 
-  console.log(`随机图片生成成功: ${OUTPUT_FILE}`);
+  console.log(`随机图片生成成功: ${outputFile} (${width}x${height})`);
 }
 
 generateRandomImage().catch((error) => {
