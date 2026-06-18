@@ -2,30 +2,6 @@
 
 用 Node.js 随机生成 PNG 图片和像素头像。
 
-## 预览
-
-### Random
-
-![Random image](random.png)
-
-### Large Random
-
-![Large random image](random-large.png)
-
-### Avatar
-
-![Pixel avatar](avatar.png)
-
-输出文件固定为：
-
-```text
-random.png
-random-large.png
-avatar.png
-```
-
-每次生成都会覆盖旧图片。
-
 ## 使用
 
 ```bash
@@ -57,3 +33,27 @@ Generate Pixel Avatar
 ```
 
 生成结果会自动提交。
+
+## 预览
+
+### Random
+
+![Random image](random.png)
+
+### Large Random
+
+![Large random image](random-large.png)
+
+### Avatar
+
+![Pixel avatar](avatar.png)
+
+输出文件固定为：
+
+```text
+random.png
+random-large.png
+avatar.png
+```
+
+每次生成都会覆盖旧图片。
