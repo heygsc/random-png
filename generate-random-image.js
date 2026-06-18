@@ -9,8 +9,8 @@ const DEFAULT_OPTIONS = {
 };
 
 const LARGE_OPTIONS = {
-  gridColumns: 80,
-  gridRows: 80,
+  gridColumns: 160,
+  gridRows: 160,
   cellSize: 100,
   outputFile: 'random-large.png',
 };

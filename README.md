@@ -21,7 +21,7 @@ yarn generate:large
 yarn avatar
 ```
 
-默认随机图为 800x800，大尺寸随机图为 8000x8000。图片尺寸在脚本顶部修改：
+默认随机图为 800x800，大尺寸随机图为 16000x16000。图片尺寸在脚本顶部修改：
 
 ```js
 const DEFAULT_OPTIONS = {
